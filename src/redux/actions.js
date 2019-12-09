@@ -5,6 +5,7 @@ export const BOOKS_FETCH_FAILED = 'BOOKS_FETCH_FAILED'
 export const CHOOSE_BOOK = 'CHOOSE_BOOK'
 export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES'
 export const REMOVE_FROM_FAVORITES = 'REMOVE_FROM_FAVORITES'
+export const RATE_BOOK = 'RATE_BOOK'
 
 // action creators
 export const searchBook = searchString => ({
@@ -35,4 +36,12 @@ export const addToFavorites = book => ({
 export const removeFromFavorites = book => ({
   type: REMOVE_FROM_FAVORITES,
   payload: book
+})
+
+export const rateBook = (book, rate) => ({
+  type: RATE_BOOK,
+  payload: {
+    book,
+    rate
+  }
 })

@@ -2,9 +2,13 @@ import React from 'react'
 import {View, Text} from 'react-native'
 import {connect} from 'react-redux'
 
+import BooksList from '../components/BooksList'
+
 class MyBooksScreen extends React.Component {
   render() {
-    return <Text> {this.props.favoriteBooks.length} </Text>
+    return (
+      <BooksList onBookClick={() => this.props.navigation.navigate('Book')} isFavorites={true}/>
+    )
   }
 }
 

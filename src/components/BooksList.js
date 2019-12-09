@@ -17,7 +17,7 @@ class BooksList extends React.Component {
     }
     return (
       <FlatList
-        data={this.props.booksList.results}
+        data={this.props.isFavorites ? this.props.favoriteBooks : this.props.booksList.results}
         renderItem={({ item, index, separators }) => (
           <TouchableHighlight
             onPress={() => this.handleBookPressed(item)}
@@ -40,6 +40,7 @@ class BooksList extends React.Component {
 
 const mapStateToProps = state => ({
   booksList: state.booksList,
+  favoriteBooks: state.favoriteBooks,
 })
 
 const mapDispatchToProps = {
