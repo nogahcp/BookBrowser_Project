@@ -25,16 +25,14 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { Provider } from 'react-redux'
 
-import RootContainer from './src/containers/RootContainer'
+import TabNavigator from './src/containers/RootContainer'
 import BrowserScreen from './src/containers/BrowserScreen'
 import store from './src/redux/store'
 
 const App: () => React$Node = () => {
   return (
     <Provider store={store} >
-      <SafeAreaView>
-        <BrowserScreen />
-      </SafeAreaView>
+        <TabNavigator />
     </Provider>
   );
 };

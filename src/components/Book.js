@@ -8,7 +8,7 @@ export default function Book(props) {
       <View style={styles.container}>
         <Image
           style={styles.bookImage}
-          source={{uri: props.json.volumeInfo.imageLinks.smallThumbnail}}
+          source={{uri: getImage(props.json)}}
         />
         <View style={styles.bookInfo}>
           <Text> {props.json.volumeInfo.title} </Text>
@@ -17,4 +17,13 @@ export default function Book(props) {
         </View>
       </View>
     )
+}
+
+function getImage(json) {
+  try {
+    return json.volumeInfo.imageLinks.smallThumbnail
+  } catch {
+    //TODO - placeholder
+    return ''
+  }
 }

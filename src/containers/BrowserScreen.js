@@ -4,21 +4,39 @@ import {connect} from 'react-redux'
 
 import BooksList from '../components/BooksList'
 import { searchBook } from '../redux/actions'
+import {styles} from '../styles/BrowserStyle'
 
 class BrowserScreen extends React.Component {
   constructor(props) {
     super(props)
-    //// TODO: fetch data on search
-    this.props.searchBook("hello")
+    this.state = {
+      searchString: '',
+    }
   }
 
   render() {
     return (
       <ScrollView>
-        <Text> BrowserScreen </Text>
+        <TextInput
+          style={styles.search}
+          placeholder='search'
+          onChangeText={text => this.handleSeachTextChange(text)}
+          value={this.state.searchString}
+          returnKeyType='search'
+        />
         <BooksList />
       </ScrollView>
     )
+  }
+
+  handleSeachTextChange(text) {
+    this.setState({
+      searchString: text
+    })
+    //search if more than 2 chars
+    if (text.length > 1) {
+      this.props.searchBook(text)
+    }
   }
 }
 
