@@ -29,7 +29,7 @@ function getImage(json) {
   }
 }
 
-//if in favorites - return user rate (not showing in search screen)
+//if user rate exist show it (not showing in search screen)
 function userRate(rate) {
   if (rate !== undefined) {
     return (<Text> Your Rate: {rate} </Text>)

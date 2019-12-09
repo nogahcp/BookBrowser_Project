@@ -12,9 +12,16 @@ class BookScreen extends React.Component {
 
   constructor(props) {
     super(props)
-    //TODO - if already rated - show user rate
+    //if already rated - show user rate
+    let starCount
+    if (this.isFavorite()) {
+      starCount = this.props.favoriteBooks.filter(book => book.id === this.props.bookInfo.id)[0].userRate
+    }
+    if (starCount === undefined) {
+      starCount = 5
+    }
     this.state = {
-      starCount: 5,
+      starCount,
     }
   }
 
