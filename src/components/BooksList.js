@@ -1,7 +1,8 @@
 import React from 'react'
-import { FlatList, Text } from 'react-native'
+import { FlatList, Text, TouchableHighlight } from 'react-native'
 import {connect} from 'react-redux'
 
+import { chooseBook } from '../redux/actions'
 import Book from './Book'
 
 class BooksList extends React.Component {
@@ -17,10 +18,23 @@ class BooksList extends React.Component {
     return (
       <FlatList
         data={this.props.booksList.results}
-        renderItem={({ item }) => <Book json={item}/>}
+        renderItem={({ item, index, separators }) => (
+          <TouchableHighlight
+            onPress={() => this.handleBookPressed(item)}
+            onShowUnderlay={separators.highlight}
+            onHideUnderlay={separators.unhighlight}>
+            <Book json={item}/>
+          </TouchableHighlight>
+        )}
         keyExtractor={item => item.id}
       />
     )
+  }
+
+  //navigate to book page when item is pressed, and save book in store
+  handleBookPressed(item) {
+    this.props.chooseBook(item)
+    this.props.onBookClick()
   }
 }
 
@@ -28,5 +42,8 @@ const mapStateToProps = state => ({
   booksList: state.booksList,
 })
 
+const mapDispatchToProps = {
+  chooseBook: chooseBook,
+}
 
-export default connect(mapStateToProps)(BooksList)
+export default connect(mapStateToProps, mapDispatchToProps)(BooksList)

@@ -24,7 +24,7 @@ class BrowserScreen extends React.Component {
           value={this.state.searchString}
           returnKeyType='search'
         />
-        <BooksList />
+        <BooksList onBookClick={() => this.props.navigation.navigate('Book')}/>
       </ScrollView>
     )
   }

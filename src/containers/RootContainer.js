@@ -6,12 +6,14 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 import BrowserScreen from './BrowserScreen'
 import MyBooksScreen from './MyBooksScreen'
+import BookScreen from './BookScreen'
 
 const TabScreens = createBottomTabNavigator({
   Browse: {
     screen: BrowserScreen,
     navigationOptions: {
       tabBarLabel: 'Browse',
+      params: { navigateToBook: (book) => this.params.navigation.navigate('Book') }
     },
   },
   MyBooks: {
@@ -22,10 +24,14 @@ const TabScreens = createBottomTabNavigator({
   }
 });
 
-const stackNavigation = createStackNavigator({
-  Home: {
-    screen: TabScreens,
+const stackNavigation = createStackNavigator(
+  {
+    Home: TabScreens,
+    Book: BookScreen,
   },
-});
+  {
+    initialRouteName: 'Home',
+  }
+);
 
 export default createAppContainer(stackNavigation)
