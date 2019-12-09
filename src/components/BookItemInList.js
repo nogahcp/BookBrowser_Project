@@ -3,7 +3,7 @@ import { Text, View, Image } from 'react-native'
 
 import {styles} from '../styles/BookStyle'
 
-export default function Book(props) {
+export default function BookItemInList(props) {
     return (
       <View style={styles.container}>
         <Image

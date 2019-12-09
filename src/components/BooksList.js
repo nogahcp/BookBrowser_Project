@@ -3,7 +3,7 @@ import { FlatList, Text, TouchableHighlight } from 'react-native'
 import {connect} from 'react-redux'
 
 import { chooseBook } from '../redux/actions'
-import Book from './Book'
+import BookItemInList from './BookItemInList'
 
 class BooksList extends React.Component {
 
@@ -23,7 +23,7 @@ class BooksList extends React.Component {
             onPress={() => this.handleBookPressed(item)}
             onShowUnderlay={separators.highlight}
             onHideUnderlay={separators.unhighlight}>
-            <Book json={item}/>
+            <BookItemInList json={item}/>
           </TouchableHighlight>
         )}
         keyExtractor={item => item.id}
