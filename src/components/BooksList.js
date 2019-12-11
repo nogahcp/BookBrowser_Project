@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, Text, TouchableHighlight } from 'react-native'
+import { FlatList, Text, TouchableHighlight, ActivityIndicator } from 'react-native'
 import {connect} from 'react-redux'
 
 import { chooseBook } from '../redux/actions'
@@ -10,9 +10,7 @@ class BooksList extends React.Component {
   render() {
     if (this.props.booksList.isLoading) {
       return (
-        <Text>
-          LOADING
-        </Text>
+        <ActivityIndicator />
       )
     }
     return (

@@ -31,6 +31,9 @@ class BookInfo extends React.Component {
             type='font-awesome'
           />
         </View>
+        <Text style={styles.text}> Average Ratins: {volumeInfo.averageRating} </Text>
+        <Text style={styles.text}> Ratins Count: {volumeInfo.ratingsCount} </Text>
+        <Text style={styles.text}> Description: {volumeInfo.description!==undefined ? volumeInfo.description : 'not provided'} </Text>
         <Text style={styles.text}> Language: {volumeInfo.language} </Text>
         <View style={styles.rowContent}>
           <Text style={styles.text}> Preview Link </Text>
