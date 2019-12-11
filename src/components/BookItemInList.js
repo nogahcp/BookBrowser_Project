@@ -13,7 +13,7 @@ export default function BookItemInList(props) {
         <View style={styles.bookInfo}>
           <Text> {props.json.volumeInfo.title} </Text>
           <Text> Publish Date: {props.json.volumeInfo.publishedDate} </Text>
-          <Text> Author: TODO </Text>
+          <Text> Authors: {getBookAuthors(props.json)} </Text>
           {userRate(props.json.userRate)}
         </View>
       </View>
@@ -27,6 +27,12 @@ function getImage(json) {
     //TODO - placeholder
     return ''
   }
+}
+
+function getBookAuthors(json) {
+  return (json.volumeInfo.authors !== undefined ?
+    json.volumeInfo.authors.toString() :
+    'not provided')
 }
 
 //if user rate exist show it (not showing in search screen)
